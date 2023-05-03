@@ -21,5 +21,4 @@ urlpatterns = [
     path('news/',views.news,name='news'),
     path('signup/',views.signup,name='signup'),
     path('',views.userlogin,name='login'),
-    path('base/',views.base,name='base')
 ]

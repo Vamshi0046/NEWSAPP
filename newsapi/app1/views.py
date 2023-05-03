@@ -10,8 +10,10 @@ def news(request):
     if request.method == 'POST':
         Day=datetime.date.today()
         Today=Day.strftime("%d")
+        m=datetime.datetime.now()
+        Month=m.strftime("%m")
         n = request.POST.get('news_type')
-        url = f"https://newsapi.org/v2/everything?q={n}&from=2023-03-{Today}&sortBy=publishedAt&apiKey=d16f9163c3474ad79ebf3ec9a90d3811"
+        url = f"https://newsapi.org/v2/everything?q={n}&from=2023-{int(Month)-1}-{Today}&sortBy=publishedAt&apiKey=d16f9163c3474ad79ebf3ec9a90d3811"
         r = requests.get(url)
         news = r.json()
         print(news)
@@ -54,8 +56,6 @@ def userlogout(request):
     return HttpResponseRedirect('/login/')
 
 
-def base(request):
-    return render(request,'htmlfiles/base.html')
 
 
 
